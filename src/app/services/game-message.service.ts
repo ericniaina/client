@@ -46,8 +46,8 @@ export class GameMessageService {
     });
 
     // Place player on position
-    this.room.listen("positions/:position", (change) => {
-      this.playerPlaced.emit(new PlacementMessage(change.operation, change.path.position, change.value)
+    this.room.listen("players/:id/:position", (change) => {
+      this.playerPlaced.emit(new PlacementMessage(change.operation, change.value, change.path.id)
     });
   }
 
