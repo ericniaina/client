@@ -1,0 +1,9 @@
+<div *ngIf="playerId then avatarID else join">
+</div>
+
+<ng-template #avatarID>
+  {{playerId}}
+</ng-template>
+<ng-template #join>  
+    <button type="button" class="btn btn-primary" (click)="onJoin()">Join {{position}}</button>
+</ng-template>

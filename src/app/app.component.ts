@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { GameMessageService } from './services/game-message.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('messageInput') messageInputRef: ElementRef;
   title = 'app';
+  messages = [];
+
+  constructor(private messageService:GameMessageService) {
+    this.messageService.messageUpdated.subscribe(
+      (message:string) => this.messages.push(message)
+    );
+  }
 }
